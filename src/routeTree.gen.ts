@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as CorridorsRouteImport } from './routes/corridors'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const AccessibilityRoute = AccessibilityRouteImport.update({
   path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CorridorsRoute = CorridorsRouteImport.update({
+  id: '/corridors',
+  path: '/corridors',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/corridors': typeof CorridorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/corridors': typeof CorridorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/corridors': typeof CorridorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accessibility'
+  fullPaths: '/' | '/accessibility' | '/corridors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accessibility'
-  id: '__root__' | '/' | '/accessibility'
+  to: '/' | '/accessibility' | '/corridors'
+  id: '__root__' | '/' | '/accessibility' | '/corridors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  CorridorsRoute: typeof CorridorsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/corridors': {
+      id: '/corridors'
+      path: '/corridors'
+      fullPath: '/corridors'
+      preLoaderRoute: typeof CorridorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
+  CorridorsRoute: CorridorsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
