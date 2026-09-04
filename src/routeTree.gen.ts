@@ -14,6 +14,7 @@ import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as CorridorsRouteImport } from './routes/corridors'
 import { Route as RouteEngineRouteImport } from './routes/route-engine'
+import { Route as SupplyRouteImport } from './routes/supply'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const RouteEngineRoute = RouteEngineRouteImport.update({
   path: '/route-engine',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupplyRoute = SupplyRouteImport.update({
+  id: '/supply',
+  path: '/supply',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
   path: '/vehicles',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/corridors'
     | '/route-engine'
+    | '/supply'
     | '/vehicles'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/corridors'
     | '/route-engine'
+    | '/supply'
     | '/vehicles'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/alerts'
     | '/corridors'
     | '/route-engine'
+    | '/supply'
     | '/vehicles'
   fileRoutesById: FileRoutesById
 }
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   AlertsRoute: typeof AlertsRoute
   CorridorsRoute: typeof CorridorsRoute
   RouteEngineRoute: typeof RouteEngineRoute
+  SupplyRoute: typeof SupplyRoute
   VehiclesRoute: typeof VehiclesRoute
 }
 
@@ -145,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RouteEngineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/supply': {
+      id: '/supply'
+      path: '/supply'
+      fullPath: '/supply'
+      preLoaderRoute: typeof SupplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vehicles': {
       id: '/vehicles'
       path: '/vehicles'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   AlertsRoute: AlertsRoute,
   CorridorsRoute: CorridorsRoute,
   RouteEngineRoute: RouteEngineRoute,
+  SupplyRoute: SupplyRoute,
   VehiclesRoute: VehiclesRoute,
 }
 export const routeTree = rootRouteImport
