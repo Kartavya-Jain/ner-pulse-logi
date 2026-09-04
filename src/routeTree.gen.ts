@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as CorridorsRouteImport } from './routes/corridors'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const AccessibilityRoute = AccessibilityRouteImport.update({
   path: '/accessibility',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CorridorsRoute = CorridorsRouteImport.update({
   id: '/corridors',
   path: '/corridors',
@@ -32,30 +38,34 @@ const CorridorsRoute = CorridorsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accessibility' | '/corridors'
+  fullPaths: '/' | '/accessibility' | '/alerts' | '/corridors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accessibility' | '/corridors'
-  id: '__root__' | '/' | '/accessibility' | '/corridors'
+  to: '/' | '/accessibility' | '/alerts' | '/corridors'
+  id: '__root__' | '/' | '/accessibility' | '/alerts' | '/corridors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  AlertsRoute: typeof AlertsRoute
   CorridorsRoute: typeof CorridorsRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccessibilityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/corridors': {
       id: '/corridors'
       path: '/corridors'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
+  AlertsRoute: AlertsRoute,
   CorridorsRoute: CorridorsRoute,
 }
 export const routeTree = rootRouteImport
