@@ -16,6 +16,7 @@ import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as CorridorsRouteImport } from './routes/corridors'
 import { Route as FieldReportsRouteImport } from './routes/field-reports'
 import { Route as RouteEngineRouteImport } from './routes/route-engine'
+import { Route as SimulationRouteImport } from './routes/simulation'
 import { Route as SupplyRouteImport } from './routes/supply'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
 
@@ -54,6 +55,11 @@ const RouteEngineRoute = RouteEngineRouteImport.update({
   path: '/route-engine',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimulationRoute = SimulationRouteImport.update({
+  id: '/simulation',
+  path: '/simulation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SupplyRoute = SupplyRouteImport.update({
   id: '/supply',
   path: '/supply',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
   '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/corridors'
     | '/field-reports'
     | '/route-engine'
+    | '/simulation'
     | '/supply'
     | '/vehicles'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/corridors'
     | '/field-reports'
     | '/route-engine'
+    | '/simulation'
     | '/supply'
     | '/vehicles'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/corridors'
     | '/field-reports'
     | '/route-engine'
+    | '/simulation'
     | '/supply'
     | '/vehicles'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   CorridorsRoute: typeof CorridorsRoute
   FieldReportsRoute: typeof FieldReportsRoute
   RouteEngineRoute: typeof RouteEngineRoute
+  SimulationRoute: typeof SimulationRoute
   SupplyRoute: typeof SupplyRoute
   VehiclesRoute: typeof VehiclesRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RouteEngineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simulation': {
+      id: '/simulation'
+      path: '/simulation'
+      fullPath: '/simulation'
+      preLoaderRoute: typeof SimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/supply': {
       id: '/supply'
       path: '/supply'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   CorridorsRoute: CorridorsRoute,
   FieldReportsRoute: FieldReportsRoute,
   RouteEngineRoute: RouteEngineRoute,
+  SimulationRoute: SimulationRoute,
   SupplyRoute: SupplyRoute,
   VehiclesRoute: VehiclesRoute,
 }
