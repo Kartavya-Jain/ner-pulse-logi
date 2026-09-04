@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as CorridorsRouteImport } from './routes/corridors'
+import { Route as RouteEngineRouteImport } from './routes/route-engine'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const CorridorsRoute = CorridorsRouteImport.update({
   path: '/corridors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RouteEngineRoute = RouteEngineRouteImport.update({
+  id: '/route-engine',
+  path: '/route-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VehiclesRoute = VehiclesRouteImport.update({
   id: '/vehicles',
   path: '/vehicles',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/accessibility': typeof AccessibilityRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
+  '/route-engine': typeof RouteEngineRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/accessibility': typeof AccessibilityRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
+  '/route-engine': typeof RouteEngineRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRoutesById {
@@ -61,15 +69,34 @@ export interface FileRoutesById {
   '/accessibility': typeof AccessibilityRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
+  '/route-engine': typeof RouteEngineRoute
   '/vehicles': typeof VehiclesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/accessibility' | '/alerts' | '/corridors' | '/vehicles'
+  fullPaths:
+    | '/'
+    | '/accessibility'
+    | '/alerts'
+    | '/corridors'
+    | '/route-engine'
+    | '/vehicles'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/accessibility' | '/alerts' | '/corridors' | '/vehicles'
+  to:
+    | '/'
+    | '/accessibility'
+    | '/alerts'
+    | '/corridors'
+    | '/route-engine'
+    | '/vehicles'
   id:
-    '__root__' | '/' | '/accessibility' | '/alerts' | '/corridors' | '/vehicles'
+    | '__root__'
+    | '/'
+    | '/accessibility'
+    | '/alerts'
+    | '/corridors'
+    | '/route-engine'
+    | '/vehicles'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +104,7 @@ export interface RootRouteChildren {
   AccessibilityRoute: typeof AccessibilityRoute
   AlertsRoute: typeof AlertsRoute
   CorridorsRoute: typeof CorridorsRoute
+  RouteEngineRoute: typeof RouteEngineRoute
   VehiclesRoute: typeof VehiclesRoute
 }
 
@@ -110,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CorridorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/route-engine': {
+      id: '/route-engine'
+      path: '/route-engine'
+      fullPath: '/route-engine'
+      preLoaderRoute: typeof RouteEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vehicles': {
       id: '/vehicles'
       path: '/vehicles'
@@ -125,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccessibilityRoute: AccessibilityRoute,
   AlertsRoute: AlertsRoute,
   CorridorsRoute: CorridorsRoute,
+  RouteEngineRoute: RouteEngineRoute,
   VehiclesRoute: VehiclesRoute,
 }
 export const routeTree = rootRouteImport
