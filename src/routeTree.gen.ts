@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as AiInsightsRouteImport } from './routes/ai-insights'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as CorridorsRouteImport } from './routes/corridors'
 import { Route as FieldReportsRouteImport } from './routes/field-reports'
@@ -26,6 +27,11 @@ const IndexRoute = IndexRouteImport.update({
 const AccessibilityRoute = AccessibilityRouteImport.update({
   id: '/accessibility',
   path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiInsightsRoute = AiInsightsRouteImport.update({
+  id: '/ai-insights',
+  path: '/ai-insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlertsRoute = AlertsRouteImport.update({
@@ -62,6 +68,7 @@ const VehiclesRoute = VehiclesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
@@ -83,6 +91,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
   '/alerts': typeof AlertsRoute
   '/corridors': typeof CorridorsRoute
   '/field-reports': typeof FieldReportsRoute
@@ -95,6 +104,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/accessibility'
+    | '/ai-insights'
     | '/alerts'
     | '/corridors'
     | '/field-reports'
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/accessibility'
+    | '/ai-insights'
     | '/alerts'
     | '/corridors'
     | '/field-reports'
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/accessibility'
+    | '/ai-insights'
     | '/alerts'
     | '/corridors'
     | '/field-reports'
@@ -126,6 +138,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccessibilityRoute: typeof AccessibilityRoute
+  AiInsightsRoute: typeof AiInsightsRoute
   AlertsRoute: typeof AlertsRoute
   CorridorsRoute: typeof CorridorsRoute
   FieldReportsRoute: typeof FieldReportsRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/accessibility'
       fullPath: '/accessibility'
       preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-insights': {
+      id: '/ai-insights'
+      path: '/ai-insights'
+      fullPath: '/ai-insights'
+      preLoaderRoute: typeof AiInsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/alerts': {
@@ -198,6 +218,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccessibilityRoute: AccessibilityRoute,
+  AiInsightsRoute: AiInsightsRoute,
   AlertsRoute: AlertsRoute,
   CorridorsRoute: CorridorsRoute,
   FieldReportsRoute: FieldReportsRoute,
