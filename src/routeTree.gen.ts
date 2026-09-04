@@ -19,6 +19,7 @@ import { Route as RouteEngineRouteImport } from './routes/route-engine'
 import { Route as SimulationRouteImport } from './routes/simulation'
 import { Route as SupplyRouteImport } from './routes/supply'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
+import { Route as AdminDataSourcesRouteImport } from './routes/admin.data-sources'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const VehiclesRoute = VehiclesRouteImport.update({
   path: '/vehicles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDataSourcesRoute = AdminDataSourcesRouteImport.update({
+  id: '/admin/data-sources',
+  path: '/admin/data-sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
   id: '/admin/users',
   path: '/admin/users',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
   '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
   '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/simulation': typeof SimulationRoute
   '/supply': typeof SupplyRoute
   '/vehicles': typeof VehiclesRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
   '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/simulation'
     | '/supply'
     | '/vehicles'
+    | '/admin/data-sources'
     | '/admin/users'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/simulation'
     | '/supply'
     | '/vehicles'
+    | '/admin/data-sources'
     | '/admin/users'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/simulation'
     | '/supply'
     | '/vehicles'
+    | '/admin/data-sources'
     | '/admin/users'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   SimulationRoute: typeof SimulationRoute
   SupplyRoute: typeof SupplyRoute
   VehiclesRoute: typeof VehiclesRoute
+  AdminDataSourcesRoute: typeof AdminDataSourcesRoute
   AdminUsersRoute: typeof AdminUsersRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VehiclesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/data-sources': {
+      id: '/admin/data-sources'
+      path: '/admin/data-sources'
+      fullPath: '/admin/data-sources'
+      preLoaderRoute: typeof AdminDataSourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/users': {
       id: '/admin/users'
       path: '/admin/users'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   SimulationRoute: SimulationRoute,
   SupplyRoute: SupplyRoute,
   VehiclesRoute: VehiclesRoute,
+  AdminDataSourcesRoute: AdminDataSourcesRoute,
   AdminUsersRoute: AdminUsersRoute,
 }
 export const routeTree = rootRouteImport
