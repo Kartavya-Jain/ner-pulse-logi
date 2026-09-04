@@ -21,6 +21,7 @@ import { Route as SupplyRouteImport } from './routes/supply'
 import { Route as VehiclesRouteImport } from './routes/vehicles'
 import { Route as AdminAuditLogsRouteImport } from './routes/admin.audit-logs'
 import { Route as AdminDataSourcesRouteImport } from './routes/admin.data-sources'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminSystemHealthRouteImport } from './routes/admin.system-health'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 
@@ -84,6 +85,11 @@ const AdminDataSourcesRoute = AdminDataSourcesRouteImport.update({
   path: '/admin/data-sources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSystemHealthRoute = AdminSystemHealthRouteImport.update({
   id: '/admin/system-health',
   path: '/admin/system-health',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/vehicles': typeof VehiclesRoute
   '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/system-health': typeof AdminSystemHealthRoute
   '/admin/users': typeof AdminUsersRoute
 }
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/vehicles': typeof VehiclesRoute
   '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/system-health': typeof AdminSystemHealthRoute
   '/admin/users': typeof AdminUsersRoute
 }
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/vehicles': typeof VehiclesRoute
   '/admin/audit-logs': typeof AdminAuditLogsRoute
   '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
   '/admin/system-health': typeof AdminSystemHealthRoute
   '/admin/users': typeof AdminUsersRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/vehicles'
     | '/admin/audit-logs'
     | '/admin/data-sources'
+    | '/admin/settings'
     | '/admin/system-health'
     | '/admin/users'
   fileRoutesByTo: FileRoutesByTo
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/vehicles'
     | '/admin/audit-logs'
     | '/admin/data-sources'
+    | '/admin/settings'
     | '/admin/system-health'
     | '/admin/users'
   id:
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/vehicles'
     | '/admin/audit-logs'
     | '/admin/data-sources'
+    | '/admin/settings'
     | '/admin/system-health'
     | '/admin/users'
   fileRoutesById: FileRoutesById
@@ -208,6 +220,7 @@ export interface RootRouteChildren {
   VehiclesRoute: typeof VehiclesRoute
   AdminAuditLogsRoute: typeof AdminAuditLogsRoute
   AdminDataSourcesRoute: typeof AdminDataSourcesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
   AdminSystemHealthRoute: typeof AdminSystemHealthRoute
   AdminUsersRoute: typeof AdminUsersRoute
 }
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDataSourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/system-health': {
       id: '/admin/system-health'
       path: '/admin/system-health'
@@ -328,6 +348,7 @@ const rootRouteChildren: RootRouteChildren = {
   VehiclesRoute: VehiclesRoute,
   AdminAuditLogsRoute: AdminAuditLogsRoute,
   AdminDataSourcesRoute: AdminDataSourcesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
   AdminSystemHealthRoute: AdminSystemHealthRoute,
   AdminUsersRoute: AdminUsersRoute,
 }
