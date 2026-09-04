@@ -27,7 +27,7 @@ const SCENARIOS = ["Flood", "Landslide", "Road blockage", "Heavy rainfall", "Mul
 const CORRIDORS = ["NH-10", "NH-27", "NH-37", "NH-6", "NH-29"];
 
 function SimulationPage() {
-  const [scenario, setScenario] = useState(SCENARIOS[2]);
+  const [scenario, setScenario] = useState<string>("Road blockage");
   const [corridor, setCorridor] = useState("NH-10");
 
   const run = useMutation({

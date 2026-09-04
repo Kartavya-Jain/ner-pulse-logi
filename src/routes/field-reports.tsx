@@ -113,12 +113,12 @@ function FieldPage() {
   };
 
   useEffect(() => {
-    if (effectiveOnline && queue.length && !syncing) {
-      const t = setTimeout(sync, 1200);
-      return () => clearTimeout(t);
-    }
+    if (!effectiveOnline || !queue.length || syncing) return undefined;
+    const t = setTimeout(sync, 1200);
+    return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [effectiveOnline, queue.length]);
+
 
   return (
     <div className="space-y-3">
