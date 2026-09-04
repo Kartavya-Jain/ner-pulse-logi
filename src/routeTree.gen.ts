@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
+import { Route as AiInsightsRouteImport } from './routes/ai-insights'
+import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as CorridorsRouteImport } from './routes/corridors'
+import { Route as FieldReportsRouteImport } from './routes/field-reports'
+import { Route as RouteEngineRouteImport } from './routes/route-engine'
+import { Route as SimulationRouteImport } from './routes/simulation'
+import { Route as SupplyRouteImport } from './routes/supply'
+import { Route as VehiclesRouteImport } from './routes/vehicles'
+import { Route as AdminAuditLogsRouteImport } from './routes/admin.audit-logs'
+import { Route as AdminDataSourcesRouteImport } from './routes/admin.data-sources'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminSystemHealthRouteImport } from './routes/admin.system-health'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiInsightsRoute = AiInsightsRouteImport.update({
+  id: '/ai-insights',
+  path: '/ai-insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlertsRoute = AlertsRouteImport.update({
+  id: '/alerts',
+  path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorridorsRoute = CorridorsRouteImport.update({
+  id: '/corridors',
+  path: '/corridors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FieldReportsRoute = FieldReportsRouteImport.update({
+  id: '/field-reports',
+  path: '/field-reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RouteEngineRoute = RouteEngineRouteImport.update({
+  id: '/route-engine',
+  path: '/route-engine',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimulationRoute = SimulationRouteImport.update({
+  id: '/simulation',
+  path: '/simulation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupplyRoute = SupplyRouteImport.update({
+  id: '/supply',
+  path: '/supply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VehiclesRoute = VehiclesRouteImport.update({
+  id: '/vehicles',
+  path: '/vehicles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAuditLogsRoute = AdminAuditLogsRouteImport.update({
+  id: '/admin/audit-logs',
+  path: '/admin/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDataSourcesRoute = AdminDataSourcesRouteImport.update({
+  id: '/admin/data-sources',
+  path: '/admin/data-sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSystemHealthRoute = AdminSystemHealthRouteImport.update({
+  id: '/admin/system-health',
+  path: '/admin/system-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
+  '/alerts': typeof AlertsRoute
+  '/corridors': typeof CorridorsRoute
+  '/field-reports': typeof FieldReportsRoute
+  '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
+  '/supply': typeof SupplyRoute
+  '/vehicles': typeof VehiclesRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/system-health': typeof AdminSystemHealthRoute
+  '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
+  '/alerts': typeof AlertsRoute
+  '/corridors': typeof CorridorsRoute
+  '/field-reports': typeof FieldReportsRoute
+  '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
+  '/supply': typeof SupplyRoute
+  '/vehicles': typeof VehiclesRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/system-health': typeof AdminSystemHealthRoute
+  '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/ai-insights': typeof AiInsightsRoute
+  '/alerts': typeof AlertsRoute
+  '/corridors': typeof CorridorsRoute
+  '/field-reports': typeof FieldReportsRoute
+  '/route-engine': typeof RouteEngineRoute
+  '/simulation': typeof SimulationRoute
+  '/supply': typeof SupplyRoute
+  '/vehicles': typeof VehiclesRoute
+  '/admin/audit-logs': typeof AdminAuditLogsRoute
+  '/admin/data-sources': typeof AdminDataSourcesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/system-health': typeof AdminSystemHealthRoute
+  '/admin/users': typeof AdminUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accessibility'
+    | '/ai-insights'
+    | '/alerts'
+    | '/corridors'
+    | '/field-reports'
+    | '/route-engine'
+    | '/simulation'
+    | '/supply'
+    | '/vehicles'
+    | '/admin/audit-logs'
+    | '/admin/data-sources'
+    | '/admin/settings'
+    | '/admin/system-health'
+    | '/admin/users'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accessibility'
+    | '/ai-insights'
+    | '/alerts'
+    | '/corridors'
+    | '/field-reports'
+    | '/route-engine'
+    | '/simulation'
+    | '/supply'
+    | '/vehicles'
+    | '/admin/audit-logs'
+    | '/admin/data-sources'
+    | '/admin/settings'
+    | '/admin/system-health'
+    | '/admin/users'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessibility'
+    | '/ai-insights'
+    | '/alerts'
+    | '/corridors'
+    | '/field-reports'
+    | '/route-engine'
+    | '/simulation'
+    | '/supply'
+    | '/vehicles'
+    | '/admin/audit-logs'
+    | '/admin/data-sources'
+    | '/admin/settings'
+    | '/admin/system-health'
+    | '/admin/users'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  AiInsightsRoute: typeof AiInsightsRoute
+  AlertsRoute: typeof AlertsRoute
+  CorridorsRoute: typeof CorridorsRoute
+  FieldReportsRoute: typeof FieldReportsRoute
+  RouteEngineRoute: typeof RouteEngineRoute
+  SimulationRoute: typeof SimulationRoute
+  SupplyRoute: typeof SupplyRoute
+  VehiclesRoute: typeof VehiclesRoute
+  AdminAuditLogsRoute: typeof AdminAuditLogsRoute
+  AdminDataSourcesRoute: typeof AdminDataSourcesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminSystemHealthRoute: typeof AdminSystemHealthRoute
+  AdminUsersRoute: typeof AdminUsersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-insights': {
+      id: '/ai-insights'
+      path: '/ai-insights'
+      fullPath: '/ai-insights'
+      preLoaderRoute: typeof AiInsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alerts': {
+      id: '/alerts'
+      path: '/alerts'
+      fullPath: '/alerts'
+      preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corridors': {
+      id: '/corridors'
+      path: '/corridors'
+      fullPath: '/corridors'
+      preLoaderRoute: typeof CorridorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/field-reports': {
+      id: '/field-reports'
+      path: '/field-reports'
+      fullPath: '/field-reports'
+      preLoaderRoute: typeof FieldReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/route-engine': {
+      id: '/route-engine'
+      path: '/route-engine'
+      fullPath: '/route-engine'
+      preLoaderRoute: typeof RouteEngineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simulation': {
+      id: '/simulation'
+      path: '/simulation'
+      fullPath: '/simulation'
+      preLoaderRoute: typeof SimulationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/supply': {
+      id: '/supply'
+      path: '/supply'
+      fullPath: '/supply'
+      preLoaderRoute: typeof SupplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vehicles': {
+      id: '/vehicles'
+      path: '/vehicles'
+      fullPath: '/vehicles'
+      preLoaderRoute: typeof VehiclesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/audit-logs': {
+      id: '/admin/audit-logs'
+      path: '/admin/audit-logs'
+      fullPath: '/admin/audit-logs'
+      preLoaderRoute: typeof AdminAuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/data-sources': {
+      id: '/admin/data-sources'
+      path: '/admin/data-sources'
+      fullPath: '/admin/data-sources'
+      preLoaderRoute: typeof AdminDataSourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/system-health': {
+      id: '/admin/system-health'
+      path: '/admin/system-health'
+      fullPath: '/admin/system-health'
+      preLoaderRoute: typeof AdminSystemHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  AiInsightsRoute: AiInsightsRoute,
+  AlertsRoute: AlertsRoute,
+  CorridorsRoute: CorridorsRoute,
+  FieldReportsRoute: FieldReportsRoute,
+  RouteEngineRoute: RouteEngineRoute,
+  SimulationRoute: SimulationRoute,
+  SupplyRoute: SupplyRoute,
+  VehiclesRoute: VehiclesRoute,
+  AdminAuditLogsRoute: AdminAuditLogsRoute,
+  AdminDataSourcesRoute: AdminDataSourcesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminSystemHealthRoute: AdminSystemHealthRoute,
+  AdminUsersRoute: AdminUsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
